@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Table stage') {
+            steps {
+                echo 'Hello from Table stage.'
+            }
+        }
+        stage ('Starting Free01 project') {
+            steps {
+                
+                build job: 'Free01'
+            }
+            // build job: 'Free01', parameters: [[$class: 'StringParameterValue', name: 'systemname', value: systemname]]
+        }
+        stage ('Starting Free01Failing  project') {
+            steps {
+                //Note that the propagate parameter in the build function is set to false, which means that the pipeline will not fail if the "Free01" pipeline fails. 
+                build job: 'Free01Failing', propagate: false
+            }
+        }
+    }
+}
