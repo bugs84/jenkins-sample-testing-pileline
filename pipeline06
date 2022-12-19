@@ -6,6 +6,15 @@ pipeline {
         sh 'echo First stage first Script. AAA'
       }
     }
+    stage('script') {
+      steps {
+        echo 'Going to SCRIPT'
+        
+        script {
+          println "Groovy Hombre GROOVY"
+        }
+      }
+    }
 
   }
   environment {
