@@ -2,8 +2,22 @@ pipeline {
   agent any
   stages {
     stage('First stage') {
-      steps {
-        sh 'echo First stage first Script. AAA'
+      parallel {
+        stage('First stage') {
+          steps {
+            sh 'echo First stage first Script. AAA'
+          }
+        }
+
+        stage('') {
+          steps {
+            script {
+              env.MY_PARALLEL_ENV="Parralel env var value"
+            }
+
+          }
+        }
+
       }
     }
 
@@ -24,6 +38,7 @@ pipeline {
       steps {
         script {
           println "env.MY_PIPELINE_ENV = '${env.MY_PIPELINE_ENV}'"
+          println "env.MY_PARALLEL_ENV= '${env.MY_PARALLEL_ENV}'"
         }
 
       }
