@@ -9,7 +9,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('set env var') {
           steps {
             script {
               env.MY_PARALLEL_ENV="Parralel env var value"
