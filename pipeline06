@@ -12,6 +12,8 @@ pipeline {
         
         script {
           println "Groovy Hombre GROOVY"
+          println "env.PATH = '$env.PATH'"
+          println "env.BUILD_ID = '$env.BUILD_ID'"
         }
       }
     }
