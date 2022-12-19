@@ -6,15 +6,26 @@ pipeline {
         sh 'echo First stage first Script. AAA'
       }
     }
+
     stage('script') {
       steps {
         echo 'Going to SCRIPT'
-        
         script {
           println "Groovy Hombre GROOVY"
           println "env.PATH = '$env.PATH'"
           println "env.BUILD_ID = '$env.BUILD_ID'"
+          env.MY_PIPELINE_ENV="Value of my Env"
         }
+
+      }
+    }
+
+    stage('Script 2') {
+      steps {
+        script {
+          println "env.MY_PIPELINE_ENV = '${env.MY_PIPELINE_ENV}'"
+        }
+
       }
     }
 
