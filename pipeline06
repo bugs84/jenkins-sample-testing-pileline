@@ -21,7 +21,7 @@ pipeline {
       }
       post {
         success {
-          echo "Parallel branch Succeeded.
+          echo "Parallel branch Succeeded."
         }
       }
     }
