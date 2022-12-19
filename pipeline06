@@ -19,6 +19,11 @@ pipeline {
         }
 
       }
+      post {
+        success {
+          echo "Parallel branch Succeeded.
+        }
+      }
     }
 
     stage('script') {
