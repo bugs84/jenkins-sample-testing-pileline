@@ -2,6 +2,12 @@ pipeline {
   agent any
   stages {
     stage('First stage') {
+      post {
+        success {
+          echo 'Parallel branch Succeeded.'
+        }
+
+      }
       parallel {
         stage('First stage') {
           steps {
@@ -18,11 +24,6 @@ pipeline {
           }
         }
 
-      }
-      post {
-        success {
-          echo "Parallel branch Succeeded."
-        }
       }
     }
 
@@ -46,6 +47,12 @@ pipeline {
           println "env.MY_PARALLEL_ENV= '${env.MY_PARALLEL_ENV}'"
         }
 
+      }
+    }
+
+    stage('Stage Leo') {
+      steps {
+        echo 'Leo stage'
       }
     }
 
