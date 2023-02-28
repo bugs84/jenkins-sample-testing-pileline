@@ -56,6 +56,23 @@ pipeline {
       }
     }
 
+    stage('Stage Pavel') {
+      parallel {
+        stage('Stage Pavel') {
+          steps {
+            echo 'Pavel Ma novou stage'
+          }
+        }
+
+        stage('Paraleln Marek') {
+          steps {
+            echo 'Marek tu je také'
+          }
+        }
+
+      }
+    }
+
   }
   environment {
     MyEnvVar = 'MyEnvValue'
